@@ -1,16 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import { useAuth } from "../context/AuthContext";  
 
 const Login = () => {
+  const { loginUser } = useAuth();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setError("");
+
+    const res = loginUser({ email, password });
+
+    if (!res.success) {
+      setError(res.message);
+      return;
+    }
+
+    alert("Login successful!");
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
-      <form className="w-full max-w-md space-y-6">
-        
+      <form onSubmit={handleLogin} className="w-full max-w-md space-y-6">
+
+        {error && (
+          <p className="text-red-500 text-sm text-center">{error}</p>
+        )}
 
         <div className="flex flex-col">
           <label className="text-sm font-medium text-gray-800 mb-1">Email</label>
           <input
             type="email"
             className="w-full bg-gray-100 p-3 rounded-lg outline-none focus:ring-2 focus:ring-red-300"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
 
@@ -19,6 +47,9 @@ const Login = () => {
           <input
             type="password"
             className="w-full bg-gray-100 p-3 rounded-lg outline-none focus:ring-2 focus:ring-red-300"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
 
