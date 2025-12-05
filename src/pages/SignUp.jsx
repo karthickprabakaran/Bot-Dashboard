@@ -21,7 +21,7 @@ const Signup = () => {
     }
 
     try {
-      await signup(email, password, name); // calling mock API in context
+      await signup(name, email, password);
       setSuccess("Signup successful!");
     } catch (err) {
       setError(err);

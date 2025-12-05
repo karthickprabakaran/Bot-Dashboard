@@ -11,7 +11,7 @@ function App() {
     <>
     <AuthProvider>
       <Header />
-      <Login />
+      <Login/>
       <Footer />
     </AuthProvider>
     </>

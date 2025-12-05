@@ -21,7 +21,10 @@ const Header = () => {
                   Dashboard
                 </button>
                 <button className="text-gray-700 hover:text-gray-900 focus:outline-none">
-                  Tasks
+                  Bots Status 
+                </button>
+                <button className="text-gray-700 hover:text-gray-900 focus:outline-none">
+                  Task Allocation
                 </button>
                 <button className="text-gray-700 hover:text-gray-900 focus:outline-none">
                   Task Queue
