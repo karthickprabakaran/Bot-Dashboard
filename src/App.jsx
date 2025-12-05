@@ -4,15 +4,19 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import { AuthProvider } from "./context/AuthContext";
+import { BotProvider } from "./context/BotContext";
+import BotStatus from "./pages/BotStatusPage";
 
 function App() {
 
   return (
     <>
     <AuthProvider>
-      <Header />
-      <Login/>
-      <Footer />
+      <BotProvider>
+        <Header />
+        <Login/>
+        <BotStatus/>
+      </BotProvider>
     </AuthProvider>
     </>
   );
