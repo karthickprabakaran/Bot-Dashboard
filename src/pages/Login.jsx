@@ -6,30 +6,25 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
 
-    const res = loginUser({ email, password });
-
-    if (!res.success) {
-      setError(res.message);
-      return;
+    try {
+      const user = await loginUser(email, password);
+      alert("Login successful!");
+      console.log("Logged in user:", user);
+    } catch (err) {
+      setError(err);
     }
-
-    alert("Login successful!");
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <form onSubmit={handleLogin} className="w-full max-w-md space-y-6">
-
-        {error && (
-          <p className="text-red-500 text-sm text-center">{error}</p>
-        )}
+        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
         <div className="flex flex-col">
           <label className="text-sm font-medium text-gray-800 mb-1">Email</label>
@@ -61,7 +56,6 @@ const Login = () => {
             Login
           </button>
         </div>
-
       </form>
     </div>
   );

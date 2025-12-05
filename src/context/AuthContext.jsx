@@ -6,8 +6,9 @@ export const AuthProvider = ({ children }) => {
   const [users, setUsers] = useState([
     {
       id: 1,
-      email: "test@example.com",
-      password: "123456",
+      name: "Karthick",
+      email: "test@gmail.com",
+      password: "test",
     },
   ]);
 
