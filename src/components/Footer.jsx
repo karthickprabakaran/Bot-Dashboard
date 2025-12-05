@@ -1,44 +1,32 @@
 const Footer = () => {
   return (
-    <header className="bg-grey shadow-sm position absolute bottom-1px">
+    <footer className="bg-gray-100 w-full fixed bottom-0 shadow-sm">
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <div className="flex items-center  ">
-            <span className="text-orange-600 font-bold text-lg">
-              Delhivery <br /> Dashboard
-            </span>
-          </div>
+        <div className="flex justify-center items-center h-14 space-x-4 text-gray-700 text-sm">
+          <span>
+            Made by <strong>Karthick</strong>
+          </span>
 
-          <nav className="flex space-x-6">
-            <div className="relative">
-              <button className="text-gray-700 hover:text-gray-900 focus:outline-none">
-                Dashboard
-              </button>
-            </div>
+          <a
+            href="https://github.com/karthickprabakaran"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-black underline"
+          >
+            GitHub
+          </a>
 
-            <div className="relative">
-              <button className="text-gray-700 hover:text-gray-900 focus:outline-none">
-                Tasks
-              </button>
-            </div>
-            <div className="relative hover:bg-primary">
-              <button className="text-gray-700 hover:text-gray-900 focus:outline-none">
-                Task Queue
-              </button>
-            </div>
-          </nav>
-
-          <div className="flex items-center space-x-2">
-            <img
-              src="https://via.placeholder.com/32"
-              alt="User Avatar"
-              className="w-8 h-8 rounded-full"
-            />
-            <span className="text-gray-700">Karthick </span>
-          </div>
+          <a
+            href="https://www.linkedin.com/in/karthick-prabakaran/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-black underline"
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
-    </header>
+    </footer>
   );
 };
 
