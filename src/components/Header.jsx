@@ -55,6 +55,12 @@ const Header = () => {
                 >
                   Task Queue
                 </button>
+                <button
+                  onClick={() => navigate("/analytics")} 
+                  className="text-gray-700 hover:text-gray-900"
+                >
+                  Analytics
+                </button>
               </nav>
 
               <div className="flex items-center space-x-2">

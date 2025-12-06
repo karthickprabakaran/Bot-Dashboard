@@ -9,20 +9,20 @@ export const TaskProvider = ({ children }) => {
     setTasks((prev) => {
       if (newTask.priority === "high") {
         let indexAfterHigh = prev.findIndex(t => t.priority !== "high");
-
         if (indexAfterHigh === -1) indexAfterHigh = prev.length;
 
-        const updated = [
+        return [
           ...prev.slice(0, indexAfterHigh),
           newTask,
           ...prev.slice(indexAfterHigh),
         ];
-
-        return updated;
       }
-
       return [...prev, newTask];
     });
+
+    setTimeout(() => {
+      setTasks((prev) => prev.filter((t) => t.id !== newTask.id));
+    }, 3000);
   };
 
   const removeTopTask = () => {
@@ -30,13 +30,7 @@ export const TaskProvider = ({ children }) => {
   };
 
   return (
-    <TaskContext.Provider
-      value={{
-        tasks,
-        addTask,
-        removeTopTask,
-      }}
-    >
+    <TaskContext.Provider value={{ tasks, addTask, removeTopTask }}>
       {children}
     </TaskContext.Provider>
   );

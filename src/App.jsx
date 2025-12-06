@@ -10,7 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import TaskAllocation from "./pages/Tasks/TaskAllocationPage";
 import BotStatus from "./pages/Bots/BotStatusPage";
 import TaskTab from "./components/Task/TaskTab";
-
+import AnalyticsPage from "./pages/Analyticspage";
 import { AuthProvider } from "./context/AuthContext";
 import { BotProvider } from "./context/BotContext";
 import { TaskProvider } from "./context/TaskContext";
@@ -63,6 +63,15 @@ function App() {
                 element={
                   <PrivateRoute>
                     <TaskQueue />
+                  </PrivateRoute>
+                }
+              />
+
+              <Route
+                path="/analytics"
+                element={
+                  <PrivateRoute>
+                    <AnalyticsPage />
                   </PrivateRoute>
                 }
               />
