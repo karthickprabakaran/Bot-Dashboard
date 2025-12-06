@@ -1,80 +1,34 @@
-import { useContext, useEffect } from "react";
-import { TaskContext } from "../../context/TaskContext";
+import { useTasks } from "../../context/TaskContext";
 
 const TaskTab = () => {
-  const { tasks, removeTopTask } = useContext(TaskContext);
+  const { tasks } = useTasks();
 
-  useEffect(() => {
-    if (tasks.length === 0) return;
-
-    const timer = setInterval(() => {
-      removeTopTask();
-    }, 3000);
-
-    return () => clearInterval(timer);
-  }, [tasks]);
-
-  const getPriorityBadge = (priority) => {
-    const styles = {
-      high: "bg-[#ED1C24] text-white",
-      medium: "bg-black text-white",
-      low: "bg-gray-300 text-black",
-    };
-    return styles[priority] || styles.medium;
-  };
+  const totalTasks = tasks.length;
+  const pendingTasks = tasks.filter(t => t.status === "pending").length;
+  const allocatedTasks = tasks.filter(t => t.status === "allocated").length;
+  const completedTasks = tasks.filter(t => t.status === "completed").length;
+  const tasksWithBlockers = tasks.filter(t => t.blocker).length;
 
   return (
     <div className="p-10">
+      <h2 className="text-3xl font-extrabold mb-8 text-black">Tasks Overview</h2>
 
-      <h2 className="text-3xl font-extrabold tracking-wide mb-8 text-black">
-        Task Queue
-      </h2>
-
-      <div className="space-y-6">
-        {tasks.length === 0 && (
-          <p className="text-gray-500 text-lg">No pending tasks.</p>
-        )}
-
-        {tasks.map((task) => (
-          <div
-            key={task.id}
-            className="
-              p-6 bg-white rounded-lg shadow-md border border-gray-200 
-              hover:shadow-lg transition  cursor-default
-            "
-          >
-            <div className="flex justify-between items-center mb-3">
-              <h3 className="text-lg text-primary font-bold text-black">
-                Task #{task.id}
-              </h3>
-
-              <span
-                className={`
-                  px-3 py-1 rounded text-xs font-bold uppercase tracking-wider 
-                  ${getPriorityBadge(task.priority)}
-                `}
-              >
-                {task.priority}
-              </span>
-            </div>
-
-            <div className="space-y-1 text-gray-700">
-              <p>
-                <span className="font-semibold">Pickup:</span> {task.pickup}
-              </p>
-              <p>
-                <span className="font-semibold">Drop:</span> {task.drop}
-              </p>
-            </div>
-
-            <p className="text-sm text-gray-500 mt-4">
-              Created: {task.createdAt.toLocaleTimeString()}
-            </p>
-          </div>
-        ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <SummaryCard label="Total Tasks" value={totalTasks} color="bg-blue-500" />
+        <SummaryCard label="Pending" value={pendingTasks} color="bg-yellow-500" />
+        <SummaryCard label="Allocated" value={allocatedTasks} color="bg-purple-500" />
+        <SummaryCard label="Completed" value={completedTasks} color="bg-green-500" />
+        <SummaryCard label="With Blockers" value={tasksWithBlockers} color="bg-red-500" />
       </div>
     </div>
   );
 };
+
+const SummaryCard = ({ label, value, color }) => (
+  <div className={`p-5 text-white rounded-xl shadow-md flex flex-col items-start ${color}`}>
+    <h3 className="text-sm opacity-90">{label}</h3>
+    <p className="text-3xl font-bold mt-1">{value}</p>
+  </div>
+);
 
 export default TaskTab;

@@ -34,7 +34,7 @@ const TaskAllocation = () => {
   return (
     <div className="max-w-xl mx-auto p-10">
 
-      <h2 className="text-3xl font-extrabold tracking-wide mb-8 text-black">
+      <h2 className="text-3xl font-extrabold mb-8 text-black">
         Allocate New Task
       </h2>
 

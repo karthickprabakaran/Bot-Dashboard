@@ -15,6 +15,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { BotProvider } from "./context/BotContext";
 import { TaskProvider } from "./context/TaskContext";
 import PrivateRoute from "./components/PrivateRoute";
+import TaskQueue from "./pages/Tasks/TaskQueue";
 
 function App() {
   return (
@@ -61,7 +62,7 @@ function App() {
                 path="/taskqueue"
                 element={
                   <PrivateRoute>
-                    <TaskTab />
+                    <TaskQueue />
                   </PrivateRoute>
                 }
               />
