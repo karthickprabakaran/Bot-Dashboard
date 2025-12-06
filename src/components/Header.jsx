@@ -50,7 +50,7 @@ const Header = () => {
                 </button>
 
                 <button
-                  onClick={() => navigate("/dashboard")} 
+                  onClick={() => navigate("/taskqueue")} 
                   className="text-gray-700 hover:text-gray-900"
                 >
                   Task Queue

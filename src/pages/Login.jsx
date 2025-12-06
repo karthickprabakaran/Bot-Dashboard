@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext"; import { useNavigate } from "react-router-dom";
- 
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { loginUser } = useAuth();
@@ -26,6 +26,11 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <form onSubmit={handleLogin} className="w-full max-w-md space-y-6">
+
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
+          Login
+        </h2>
+
         {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
         <div className="flex flex-col">
@@ -58,6 +63,17 @@ const Login = () => {
             Login
           </button>
         </div>
+
+        <p className="text-center text-sm text-gray-700">
+          New user?
+          <button
+            type="button"
+            onClick={() => navigate("/signup")}
+            className="text-red-500 ml-1 underline hover:text-red-600"
+          >
+            Sign up here
+          </button>
+        </p>
       </form>
     </div>
   );
