@@ -3,9 +3,9 @@ import React from "react";
 const Card = ({ label, value, type }) => {
   const colorClasses = {
     total: "bg-black text-white",
-    idle: "bg-[#1EAD55] text-white",       
-    busy: "bg-[#ED1C24] text-white",       
-    error: "bg-[#333333] text-white",      
+    idle: "bg-orange-400 text-white",       
+    busy: "bg-green-800 text-white",       
+    error: "bg-red-900 text-white",      
     pending: "bg-[#F5F5F5] text-black",   
   };
 

@@ -10,25 +10,39 @@ const TaskTab = () => {
   const tasksWithBlockers = tasks.filter(t => t.blocker).length;
 
   return (
-    <div className="p-10">
-      <h2 className="text-3xl font-extrabold mb-8 text-black">Tasks Overview</h2>
+    <>
+      <h2 className="text-3xl font-extrabold mb-8 text-black">
+        Tasks Overview
+      </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-        <SummaryCard label="Total Tasks" value={totalTasks} color="bg-blue-500" />
-        <SummaryCard label="Pending" value={pendingTasks} color="bg-yellow-500" />
-        <SummaryCard label="Allocated" value={allocatedTasks} color="bg-purple-500" />
-        <SummaryCard label="Completed" value={completedTasks} color="bg-green-500" />
-        <SummaryCard label="With Blockers" value={tasksWithBlockers} color="bg-red-500" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <SummaryCard label="Total Tasks" value={totalTasks} type="total" />
+        <SummaryCard label="Pending Tasks" value={pendingTasks} type="pending" />
+        <SummaryCard label="Allocated Tasks" value={allocatedTasks} type="allocated" />
+        <SummaryCard label="Completed Tasks" value={completedTasks} type="completed" />
+        <SummaryCard label="Tasks With Blockers" value={tasksWithBlockers} type="blocker" />
       </div>
-    </div>
+    </>
   );
 };
 
-const SummaryCard = ({ label, value, color }) => (
-  <div className={`p-5 text-white rounded-xl shadow-md flex flex-col items-start ${color}`}>
-    <h3 className="text-sm opacity-90">{label}</h3>
-    <p className="text-3xl font-bold mt-1">{value}</p>
-  </div>
-);
+const SummaryCard = ({ label, value, type }) => {
+  const bgMap = {
+    total: "bg-black",
+    pending: "bg-yellow-500",
+    allocated: "bg-blue-600",
+    completed: "bg-green-600",
+    blocker: "bg-red-600"
+  };
+
+  return (
+    <div
+      className={`p-6 rounded-2xl shadow-lg text-white ${bgMap[type]}`}
+    >
+      <p className="text-lg font-medium mb-2">{label}</p>
+      <p className="text-4xl font-extrabold">{value}</p>
+    </div>
+  );
+};
 
 export default TaskTab;
