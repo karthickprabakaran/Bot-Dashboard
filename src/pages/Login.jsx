@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";  
+import { useAuth } from "../context/AuthContext"; import { useNavigate } from "react-router-dom";
+ 
 
 const Login = () => {
   const { loginUser } = useAuth();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,8 +16,8 @@ const Login = () => {
 
     try {
       const user = await loginUser(email, password);
-      alert("Login successful!");
       console.log("Logged in user:", user);
+      navigate("/dashboard");
     } catch (err) {
       setError(err);
     }
