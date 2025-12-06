@@ -26,7 +26,7 @@ const BotCard = ({ bot }) => {
           style={{ color: PRIMARY_COLOR }}
           className="font-bold text-2xl"
         >
-          Bot No: {String(bot.id)}
+          Bot No: {bot.id}
         </h2>
         <p className="text-xs opacity-60">
           {bot.lastUpdated}
