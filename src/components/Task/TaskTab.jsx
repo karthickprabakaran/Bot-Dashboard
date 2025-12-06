@@ -1,23 +1,36 @@
-
-import React from "react";
-import { useTasks } from "../../context/TaskContext";
+import { useContext, useEffect } from "react";
+import { TaskContext } from "../../context/TaskContext";
 
 const TaskTab = () => {
-  const { tasks } = useTasks();
+  const { tasks, removeTopTask } = useContext(TaskContext);
+
+  useEffect(() => {
+    if (tasks.length === 0) return;
+
+    const timer = setInterval(() => {
+      removeTopTask();
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [tasks]);
 
   return (
-    <div className="p-4 bg-white rounded-xl shadow-md">
-      <h2 className="text-lg font-semibold mb-3">Task Summary</h2>
-      <p className="text-gray-600 mb-4">Overview of pending and completed tasks.</p>
+    <div className="p-10">
+      <h2 className="text-xl font-bold mb-4">Task Queue</h2>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
+        {tasks.length === 0 && (
+          <p className="text-gray-500">No pending tasks.</p>
+        )}
+
         {tasks.map((task) => (
-          <div
-            key={task.id}
-            className="p-4 border rounded-lg shadow-sm hover:shadow-md transition"
-          >
-            <h3 className="font-medium">{task.title}</h3>
-            <p className="text-sm text-gray-600">Status: {task.status}</p>
+          <div key={task.id} className="p-4 border rounded shadow-sm">
+            <p><b>Pickup:</b> {task.pickup}</p>
+            <p><b>Drop:</b> {task.drop}</p>
+            <p><b>Priority:</b> {task.priority}</p>
+            <p className="text-sm text-gray-500">
+              Created: {task.createdAt.toLocaleTimeString()}
+            </p>
           </div>
         ))}
       </div>

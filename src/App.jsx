@@ -8,7 +8,6 @@ import { BotProvider } from "./context/BotContext";
 import { TaskProvider } from "./context/TaskContext";
 import BotStatus from "./pages/Bots/BotStatusPage";
 import TaskAllocation from "./pages/Tasks/TaskAllocationPage";
-import TaskQueue from "./pages/Tasks/TaskQueuePage";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
         <Login/>
         <BotStatus/>
         <TaskAllocation />
-        <TaskQueue />
         <Dashboard />
         </TaskProvider>
       </BotProvider>
