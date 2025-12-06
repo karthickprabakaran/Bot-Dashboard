@@ -5,7 +5,10 @@ import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import { AuthProvider } from "./context/AuthContext";
 import { BotProvider } from "./context/BotContext";
+import { TaskProvider } from "./context/TaskContext";
 import BotStatus from "./pages/BotStatusPage";
+import TaskAllocation from "./pages/TaskAllocationPage";
+import TaskQueue from "./pages/TaskQueuePage";
 
 function App() {
 
@@ -13,9 +16,13 @@ function App() {
     <>
     <AuthProvider>
       <BotProvider>
+        <TaskProvider>
         <Header />
         <Login/>
         <BotStatus/>
+        <TaskAllocation />
+        <TaskQueue />
+        </TaskProvider>
       </BotProvider>
     </AuthProvider>
     </>
