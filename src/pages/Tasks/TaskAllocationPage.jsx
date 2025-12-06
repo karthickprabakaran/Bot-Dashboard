@@ -32,50 +32,97 @@ const TaskAllocation = () => {
   };
 
   return (
-    <div className="p-10 max-w-lg mx-auto">
-      <h2 className="text-2xl font-bold mb-6">Allocate New Task</h2>
+    <div className="max-w-xl mx-auto p-10">
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <h2 className="text-3xl font-extrabold tracking-wide mb-8 text-black">
+        Allocate New Task
+      </h2>
 
-        <input
-          name="pickup"
-          value={form.pickup}
-          onChange={handleChange}
-          placeholder="Pickup Location"
-          className="w-full border p-3 rounded"
-        />
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 bg-white p-8 rounded-lg shadow-md border border-gray-200"
+      >
+        <div>
+          <label className="block text-sm font-semibold mb-2 text-gray-700">
+            Pickup Location
+          </label>
+          <input
+            name="pickup"
+            value={form.pickup}
+            onChange={handleChange}
+            placeholder="Enter pickup location"
+            className="
+              w-full p-3 border border-gray-300 rounded 
+              focus:border-[#ED1C24] focus:ring-1 focus:ring-[#ED1C24] 
+              transition
+            "
+          />
+        </div>
 
-        <input
-          name="drop"
-          value={form.drop}
-          onChange={handleChange}
-          placeholder="Drop Location"
-          className="w-full border p-3 rounded"
-        />
+        <div>
+          <label className="block text-sm font-semibold mb-2 text-gray-700">
+            Drop Location
+          </label>
+          <input
+            name="drop"
+            value={form.drop}
+            onChange={handleChange}
+            placeholder="Enter drop location"
+            className="
+              w-full p-3 border border-gray-300 rounded 
+              focus:border-[#ED1C24] focus:ring-1 focus:ring-[#ED1C24] 
+              transition
+            "
+          />
+        </div>
 
-        <select
-          name="priority"
-          value={form.priority}
-          onChange={handleChange}
-          className="w-full border p-3 rounded"
+        <div>
+          <label className="block text-sm font-semibold mb-2 text-gray-700">
+            Priority
+          </label>
+          <select
+            name="priority"
+            value={form.priority}
+            onChange={handleChange}
+            className="
+              w-full p-3 border border-gray-300 rounded 
+              focus:border-[#ED1C24] focus:ring-1 focus:ring-[#ED1C24] 
+              transition bg-white
+            "
+          >
+            <option value="high">High Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="low">Low Priority</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold mb-2 text-gray-700">
+            Comments
+          </label>
+          <textarea
+            name="comments"
+            value={form.comments}
+            onChange={handleChange}
+            placeholder="Enter any task notes"
+            rows="4"
+            className="
+              w-full p-3 border border-gray-300 rounded 
+              focus:border-[#ED1C24] focus:ring-1 focus:ring-[#ED1C24] 
+              transition
+            "
+          />
+        </div>
+
+        <button
+          className="
+            w-full bg-[#ED1C24] text-white py-3 font-semibold rounded 
+            hover:bg-[#c9151c] transition 
+            tracking-wide uppercase shadow-md
+          "
         >
-          <option value="high">High Priority</option>
-          <option value="medium">Medium Priority</option>
-          <option value="low">Low Priority</option>
-        </select>
-
-        <textarea
-          name="comments"
-          value={form.comments}
-          onChange={handleChange}
-          placeholder="Comments"
-          className="w-full border p-3 rounded"
-        />
-
-        <button className="bg-orange-500 text-white px-6 py-2 rounded">
           Add Task
         </button>
-
       </form>
     </div>
   );
