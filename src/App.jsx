@@ -6,9 +6,10 @@ import Signup from "./pages/SignUp";
 import { AuthProvider } from "./context/AuthContext";
 import { BotProvider } from "./context/BotContext";
 import { TaskProvider } from "./context/TaskContext";
-import BotStatus from "./pages/BotStatusPage";
-import TaskAllocation from "./pages/TaskAllocationPage";
-import TaskQueue from "./pages/TaskQueuePage";
+import BotStatus from "./pages/Bots/BotStatusPage";
+import TaskAllocation from "./pages/Tasks/TaskAllocationPage";
+import TaskQueue from "./pages/Tasks/TaskQueuePage";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <BotStatus/>
         <TaskAllocation />
         <TaskQueue />
+        <Dashboard />
         </TaskProvider>
       </BotProvider>
     </AuthProvider>

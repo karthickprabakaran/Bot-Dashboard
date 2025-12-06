@@ -1,6 +1,6 @@
 import React from "react";
-import { useBots } from "../context/BotContext";
-import BotCard from "../components/Bot/BotCard";
+import { useBots } from "../../context/BotContext";
+import BotCard from "../../components/Bot/BotCard";
 
 const BotStatus = () => {
   const { bots } = useBots();
