@@ -1,4 +1,4 @@
--> Delhivery Bot Management Dashboard
+#  Delhivery Bot and Task Management Dashboard
 
 A simulation-based admin dashboard built using React + Context API, designed to manage bots, view task queues, track analytics, and provide a full mock operational experience.
 
@@ -138,8 +138,14 @@ This project uses **React Context API** for state management because it provides
 
 Overall, Context API was chosen because it provides the **perfect balance between simplicity, scalability, and performance** for this project.
 
+## Figma Link
 
-->  Features
+```
+https://www.figma.com/design/0eDXZKs6ZGadwe68cXsMl2/DashBoard-design-for-bot-and-task?node-id=0-1&t=0Du4TdeOtuoyYNxk-1
+```
+
+
+## ->  Features
 
 -> Authentication
 	•	Simple login & signup flow
