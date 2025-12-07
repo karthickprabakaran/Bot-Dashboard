@@ -60,7 +60,7 @@ const Header = () => {
                 <button onClick={() => navigate("/bots")} className="nav-btn">Bots Status</button>
                 <button onClick={() => navigate("/tasks")} className="nav-btn">Task Allocation</button>
                 <button onClick={() => navigate("/taskqueue")} className="nav-btn">Task Queue</button>
-                <button onClick={() => navigate("/analytics")} className="nav-btn">Analytics</button>
+                <button onClick={() => navigate("/botmap")} className="nav-btn">Bot Map</button>
               </>
             ) : (
               <>
@@ -96,6 +96,7 @@ const Header = () => {
                   <button onClick={() => navigate("/tasks")} className="mobile-nav-btn">Task Allocation</button>
                   <button onClick={() => navigate("/taskqueue")} className="mobile-nav-btn">Task Queue</button>
                   <button onClick={() => navigate("/analytics")} className="mobile-nav-btn">Analytics</button>
+                  <button onClick={() => navigate("/botmap")} className="mobile-nav-btn">Bot Map</button>
 
                   <div className="flex items-center space-x-3 mt-4">
                     <img

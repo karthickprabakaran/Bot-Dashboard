@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useCallback } from "react";
 
 const BotContext = createContext();
 
@@ -6,33 +6,38 @@ export const BotProvider = ({ children }) => {
   const [bots, setBots] = useState(
     Array.from({ length: 10 }, (_, i) => ({
       id: i + 1,
-      battery: Math.floor(Math.random() * 100),
+      x: Math.random() * 1000,
+      y: Math.random() * 1000,
+      name: `Bot-${i + 1}`,
       status: ["idle", "busy", "charging", "error"][Math.floor(Math.random() * 4)],
-      currentTask: "Task " + (i + 1),
-      speed: Math.floor(Math.random() * 10) + 1,
-      lastUpdated: new Date().toLocaleTimeString(),
+      battery: Math.floor(Math.random() * 100),
     }))
   );
 
-  // for the updating every 10 sec 
-  // TODO: use Throttling from the loadash later after doing the Home dash borasd page
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBots((prevBots) =>
-        prevBots.map((bot) => ({
-          ...bot,
-          battery: Math.max(bot.battery - Math.floor(Math.random() * 5), 0),
-          status: ["idle", "busy", "charging", "error"][Math.floor(Math.random() * 4)],
-          lastUpdated: new Date().toLocaleTimeString(),
-        }))
-      );
-    }, 10000);
+  const [movementActive, setMovementActive] = useState(false);
 
-    return () => clearInterval(interval);
+  const nudgeBots = useCallback(() => {
+    setBots((prevBots) =>
+      prevBots.map((bot) => ({
+        ...bot,
+        x: Math.max(0, Math.min(1000, bot.x + (Math.random() * 20 - 10))),
+        y: Math.max(0, Math.min(1000, bot.y + (Math.random() * 20 - 10))),
+      }))
+    );
   }, []);
 
+  useEffect(() => {
+    if (!movementActive) return;
+
+    const interval = setInterval(() => {
+      nudgeBots();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [movementActive, nudgeBots]);
+
   return (
-    <BotContext.Provider value={{ bots, setBots }}>
+    <BotContext.Provider value={{ bots, movementActive, setMovementActive }}>
       {children}
     </BotContext.Provider>
   );

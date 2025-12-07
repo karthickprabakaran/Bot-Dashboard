@@ -16,6 +16,7 @@ import { BotProvider } from "./context/BotContext";
 import { TaskProvider } from "./context/TaskContext";
 import PrivateRoute from "./components/PrivateRoute";
 import TaskQueue from "./pages/Tasks/TaskQueue";
+import MapPage from "./pages/MapPage";
 
 function App() {
   return (
@@ -72,6 +73,15 @@ function App() {
                 element={
                   <PrivateRoute>
                     <AnalyticsPage />
+                  </PrivateRoute>
+                }
+              />
+
+              <Route
+                path="/botmap"
+                element={
+                  <PrivateRoute>
+                    <MapPage />
                   </PrivateRoute>
                 }
               />
